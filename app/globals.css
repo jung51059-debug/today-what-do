@@ -1,0 +1,385 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-cream: #f9f6f1;
+  --color-cream-dark: #f5f0e8;
+  --color-green: #8ba895;
+  --color-green-light: #9bb8a6;
+  --color-brown: #2b211c;
+  --color-brown-muted: #7b6a5e;
+  --color-card: #ffffff;
+  --color-border-warm: #e8ddd0;
+  --color-border-header: #ebe3d8;
+  --color-chip-border: #e6d2bd;
+  --color-privacy-bg: #f1faf4;
+  --color-privacy-border: #bfdcc9;
+  --color-disabled: #c4b5a8;
+  --color-mint-border: #a7c9b7;
+  --color-ink: #2b211c;
+  --color-border: #e8d8c8;
+  --color-cream-muted: #f5f0ea;
+  --color-mint: #5e8f73;
+  --color-mint-hover: #4d7d60;
+  --font-sans: var(--font-noto-sans-kr);
+}
+
+/* ── 앱 미리보기 (참고: 오늘 뭐 먹지? 레이아웃) ── */
+.phone-showcase-frame {
+  border-radius: 2.5rem;
+  border: 1px solid #eadfce;
+  background: #f8f5f0;
+  padding: 2.5rem 1.5rem 2rem;
+  box-shadow: 0 20px 50px rgb(0 0 0 / 0.05);
+}
+
+@media (min-width: 640px) {
+  .phone-showcase-frame {
+    padding: 3.5rem 2.5rem 2.75rem;
+  }
+}
+
+.phone-showcase-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 0.25rem;
+  scrollbar-width: none;
+  width: 100%;
+}
+
+.phone-showcase-row::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .phone-showcase-row {
+    gap: 3rem;
+    overflow-x: visible;
+    scroll-snap-type: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .phone-showcase-row {
+    gap: 4rem;
+  }
+}
+
+.phone-mockup-figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  flex-shrink: 0;
+  scroll-snap-align: center;
+}
+
+/* 좌·우 폰 — 살짝 작고 흐리게 */
+.phone-mockup-figure--side {
+  opacity: 0.85;
+  transform: scale(0.95) translateY(0.5rem);
+}
+
+.phone-mockup-figure--center {
+  transform: translateY(-0.25rem);
+  z-index: 2;
+}
+
+@media (min-width: 640px) {
+  .phone-mockup-figure--side {
+    transform: scale(0.95) translateY(0.75rem);
+  }
+
+  .phone-mockup-figure--center {
+    transform: translateY(-0.5rem);
+  }
+}
+
+/* 목업 3개 합 ~650px (양쪽 208px · 가운데 256px @ sm+) */
+.phone-mockup-photo {
+  width: 12rem;
+  line-height: 0;
+  filter: drop-shadow(0 12px 24px rgb(43 33 28 / 0.12));
+}
+
+@media (min-width: 640px) {
+  .phone-mockup-photo {
+    width: 13rem;
+  }
+}
+
+.phone-mockup-figure--center .phone-mockup-photo {
+  width: 14rem;
+  filter: none;
+  border-radius: 1.25rem;
+  box-shadow: 0 30px 60px rgb(0 0 0 / 0.08);
+}
+
+@media (min-width: 640px) {
+  .phone-mockup-figure--center .phone-mockup-photo {
+    width: 16rem;
+  }
+}
+
+/* Hero 홍보 카드 — 오른쪽 열 채우기, 큰 화면 최대 900px */
+@media (min-width: 1024px) {
+  .hero-promo-card {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .hero-promo-card {
+    min-width: 680px;
+    max-width: 900px;
+  }
+}
+
+.phone-mockup-photo-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* 고해상도 원본을 축소할 때 텍스트·아이콘 선명도 유지 */
+  image-rendering: -webkit-optimize-contrast;
+}
+
+.phone-mockup-label {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-brown-muted);
+}
+
+@media (min-width: 640px) {
+  .phone-mockup-label {
+    margin-top: 1.125rem;
+    font-size: 0.9375rem;
+    color: var(--color-brown);
+  }
+}
+
+.cta-box {
+  box-shadow: 0 1px 3px rgb(43 33 28 / 0.05);
+}
+
+/* 기능 카드 — PC 호버만, 크기 변화 없이 translateY(-3px)만 */
+.card-feature-hover {
+  border-color: var(--color-border-warm);
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card-feature-hover:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-mint-border);
+    box-shadow: 0 10px 24px rgb(43 33 28 / 0.1);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-brown);
+  font-family: var(--font-noto-sans-kr), system-ui, sans-serif;
+}
+
+/* ── 개인정보처리방침 페이지 ── */
+.privacy-page-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.privacy-intro p {
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+/* 도입 문단 2번째 문장 — 자간만 살짝 줄여 한 줄 표시 */
+.privacy-intro-subline {
+  letter-spacing: -0.045em;
+  word-break: keep-all;
+}
+
+@media (min-width: 480px) {
+  .privacy-intro-subline {
+    font-size: 0.875rem;
+    letter-spacing: -0.06em;
+    white-space: nowrap;
+  }
+
+  /* 12. 방침 변경 — 한 줄 유지, 이전보다 덜 눌린 크기 */
+  .prose-privacy #changes > .privacy-intro-subline {
+    font-size: 0.875rem;
+    letter-spacing: -0.048em;
+  }
+}
+
+.privacy-effective-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  border-radius: 0.5rem;
+  background: #f8f5f0;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--color-brown-muted);
+}
+
+.privacy-toc-heading {
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-brown);
+}
+
+.privacy-toc-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9375rem;
+  line-height: 2;
+}
+
+.privacy-toc-list a {
+  color: var(--color-brown-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.privacy-toc-list a:hover {
+  color: var(--color-green);
+}
+
+.prose-privacy {
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.prose-privacy h2 {
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-brown);
+  scroll-margin-top: 6rem;
+}
+
+.prose-privacy h2:first-child {
+  margin-top: 0;
+}
+
+.prose-privacy p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--color-brown-muted);
+}
+
+.prose-privacy ul {
+  margin-bottom: 1rem;
+  margin-left: 1.25rem;
+  list-style-type: disc;
+}
+
+.prose-privacy li {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--color-brown-muted);
+}
+
+.prose-privacy a {
+  color: var(--color-green);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.prose-privacy a:hover {
+  color: var(--color-green-light);
+}
+
+.privacy-section-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  scroll-margin-top: 6rem;
+}
+
+/* 운영자 정보 카드 */
+.privacy-operator-card {
+  overflow: hidden;
+  border-radius: 0.75rem;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-cream-muted);
+}
+
+.privacy-operator-row {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+@media (min-width: 640px) {
+  .privacy-operator-row {
+    grid-template-columns: 140px 1fr;
+  }
+}
+
+.privacy-operator-row:last-child {
+  border-bottom: none;
+}
+
+.privacy-operator-row dt {
+  font-weight: 500;
+  color: var(--color-ink);
+}
+
+.privacy-operator-row dd {
+  margin: 0;
+  color: var(--color-ink);
+}
+
+.prose-privacy .privacy-detail-list {
+  margin-bottom: 1rem;
+}
+
+.prose-privacy .privacy-detail-item + .privacy-detail-item {
+  margin-top: 1.25rem;
+}
+
+.prose-privacy .privacy-detail-item h3 {
+  margin: 0 0 0.375rem;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  line-height: 1.6;
+  color: var(--color-brown);
+}
+
+.prose-privacy .privacy-detail-item p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.privacy-operator-row dt,
+.privacy-operator-row dd {
+  font-size: 0.9375rem;
+  line-height: 1.8;
+}
