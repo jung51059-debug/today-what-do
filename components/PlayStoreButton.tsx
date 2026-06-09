@@ -1,16 +1,30 @@
+"use client";
+
 import { SITE } from "@/content/site";
-import GooglePlayIcon from "./GooglePlayIcon";
+import GooglePlayBadge from "./GooglePlayBadge";
 
 type PlayStoreButtonProps = {
-  variant?: "pill" | "header";
+  variant?: "badge" | "header";
   className?: string;
 };
 
-const pillClass =
-  "inline-flex min-h-[60px] items-center gap-3 rounded-full bg-green px-8 text-base font-bold text-white shadow-md transition-colors hover:bg-green-light";
+function scrollToDownloadSection(e: React.MouseEvent<HTMLAnchorElement>) {
+  e.preventDefault();
+  const target = document.getElementById("download");
+  if (!target) return;
+
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+
+  target.scrollIntoView({
+    behavior: prefersReducedMotion ? "auto" : "smooth",
+    block: "start",
+  });
+}
 
 export default function PlayStoreButton({
-  variant = "pill",
+  variant = "badge",
   className = "",
 }: PlayStoreButtonProps) {
   const isComingSoon =
@@ -24,7 +38,8 @@ export default function PlayStoreButton({
           target: "_blank",
           rel: "noopener noreferrer",
         })}
-        className={`rounded-full bg-green px-5 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-green-light ${className}`}
+        {...(isComingSoon && { onClick: scrollToDownloadSection })}
+        className={`rounded-full bg-[#8eb39b] px-[18px] py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(0,0,0,0.12)] ${className}`}
         aria-label={
           isComingSoon ? "다운로드 섹션으로 이동" : "Google Play에서 다운로드"
         }
@@ -34,29 +49,18 @@ export default function PlayStoreButton({
     );
   }
 
-  if (isComingSoon) {
-    return (
-      <a
-        href="#download"
-        className={`${pillClass} ${className}`}
-        aria-label="Google Play에서 받기"
-      >
-        <GooglePlayIcon />
-        {SITE.playStoreButtonLabel}
-      </a>
-    );
-  }
-
   return (
     <a
-      href={SITE.playStoreUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`${pillClass} ${className}`}
+      href={isComingSoon ? "#download" : SITE.playStoreUrl}
+      {...(!isComingSoon && {
+        target: "_blank",
+        rel: "noopener noreferrer",
+      })}
+      {...(isComingSoon && { onClick: scrollToDownloadSection })}
+      className={`inline-block transition-opacity hover:opacity-[0.85] ${className}`}
       aria-label="Google Play에서 다운로드"
     >
-      <GooglePlayIcon />
-      {SITE.playStoreButtonLabel}
+      <GooglePlayBadge />
     </a>
   );
 }

@@ -1,5 +1,5 @@
 import { CTA_HIGHLIGHTS, SITE } from "@/content/site";
-import GooglePlayIcon from "./GooglePlayIcon";
+import PlayStoreButton from "./PlayStoreButton";
 
 type CTAProps = {
   /** 앱 미리보기 섹션 안에 붙일 때 */
@@ -7,9 +7,6 @@ type CTAProps = {
 };
 
 export default function CTA({ embedded = false }: CTAProps) {
-  const isComingSoon =
-    SITE.playStoreUrl === "#" || SITE.playStoreUrl === "coming-soon";
-
   const card = (
     <div
       id="download"
@@ -37,20 +34,9 @@ export default function CTA({ embedded = false }: CTAProps) {
         ))}
       </div>
 
-      <a
-        href={isComingSoon ? "#download" : SITE.playStoreUrl}
-        {...(!isComingSoon && {
-          target: "_blank",
-          rel: "noopener noreferrer",
-        })}
-        className="mx-auto mt-7 inline-flex items-center justify-center gap-3 rounded-full bg-[#8FAF9B] px-10 py-4 text-sm font-black text-white shadow-md transition hover:bg-[#7FA08C]"
-        aria-label={
-          isComingSoon ? "Google Play에서 받기" : "Google Play에서 다운로드"
-        }
-      >
-        <GooglePlayIcon />
-        {SITE.playStoreButtonLabel}
-      </a>
+      <div className="mt-7 flex justify-center">
+        <PlayStoreButton />
+      </div>
     </div>
   );
 

@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { SITE } from "@/content/site";
 import AppIcon from "./AppIcon";
-import PlayStoreButton from "./PlayStoreButton";
 
 export default function Hero() {
   return (
@@ -20,7 +19,7 @@ export default function Hero() {
 
           <h1
             id="hero-title"
-            className="mt-2 text-4xl font-black tracking-tight text-brown sm:text-6xl lg:leading-tight"
+            className="mt-2 text-3xl font-black tracking-tight text-brown sm:text-4xl lg:text-5xl lg:leading-tight"
           >
             {SITE.name}
           </h1>
@@ -28,10 +27,6 @@ export default function Hero() {
           <p className="mx-auto mt-5 max-w-md whitespace-pre-line text-base leading-7 text-brown-muted sm:text-xl lg:mx-0">
             {SITE.heroDescription}
           </p>
-
-          <div className="mt-8 flex justify-center lg:justify-start" id="download">
-            <PlayStoreButton />
-          </div>
         </div>
 
         {/* 오른쪽: 홍보 이미지 — 비율 고정으로 줌 시에도 안정적 */}
