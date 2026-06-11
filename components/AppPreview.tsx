@@ -53,7 +53,7 @@ export default function AppPreview() {
                 label={screen.label}
                 width={screen.width}
                 height={screen.height}
-                featured={"featured" in screen && screen.featured}
+                featured={index === 1}
                 priority={index === 1}
               />
             ))}

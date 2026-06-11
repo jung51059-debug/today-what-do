@@ -60,7 +60,7 @@ export default function PlayStoreButton({
       className={`inline-block transition-opacity hover:opacity-[0.85] ${className}`}
       aria-label="Google Play에서 다운로드"
     >
-      <GooglePlayBadge />
+      <GooglePlayBadge size="large" />
     </a>
   );
 }

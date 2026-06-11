@@ -9,8 +9,8 @@ export const SITE = {
   description:
     "지금 기분과 상황에 맞는 오늘의 활동을 추천해 주는 Android 앱. 회원가입 없이 바로 사용하세요.",
   ctaDescription:
-    "오늘 뭐 하지?로 상황에 맞는 활동과 근처 장소를 만나보세요.",
-  ctaTitle: "오늘 뭐 할지, 지금 바로 시작해 보세요",
+    "상황에 맞는 활동을 추천받고\n근처 장소까지 바로 찾아보세요.",
+  ctaTitle: "오늘 뭐 할지 고민될 때, 지금 바로 시작해 보세요.",
   packageName: "com.example.flutter_application_1",
   /** Google Play 출시 후 실제 URL로 교체 */
   playStoreUrl: "#",
@@ -30,9 +30,9 @@ export const OPERATOR_ADDRESS = SITE.address;
 export const CONTACT_EMAIL = SITE.contactEmail;
 
 export const CTA_HIGHLIGHTS = [
-  "회원가입 없음",
-  "근처 장소 추천",
-  "관심 없음 제외",
+  "회원가입 없이 바로 사용",
+  "근처 장소 자동 추천",
+  "관심 없는 활동 제외",
 ] as const;
 
 export const APP_PREVIEW = {
@@ -51,7 +51,6 @@ export const APP_PREVIEW = {
       src: "/mockups/recommend.png",
       alt: "오늘의 추천 활동 화면 목업",
       label: "오늘의 추천",
-      featured: true,
       width: 489,
       height: 979,
     },

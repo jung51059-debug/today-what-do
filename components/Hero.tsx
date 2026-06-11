@@ -19,12 +19,12 @@ export default function Hero() {
 
           <h1
             id="hero-title"
-            className="mt-2 text-3xl font-black tracking-tight text-brown sm:text-4xl lg:text-5xl lg:leading-tight"
+            className="mt-2 text-[34px] font-bold leading-tight tracking-tight text-ink sm:text-[40px] lg:text-[54px]"
           >
             {SITE.name}
           </h1>
 
-          <p className="mx-auto mt-5 max-w-md whitespace-pre-line text-base leading-7 text-brown-muted sm:text-xl lg:mx-0">
+          <p className="mx-auto mt-4 max-w-[420px] whitespace-pre-line text-[19px] leading-[1.7] text-ink-muted sm:text-[21px] lg:mx-0">
             {SITE.heroDescription}
           </p>
         </div>

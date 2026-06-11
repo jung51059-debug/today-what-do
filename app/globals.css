@@ -15,7 +15,8 @@
   --color-privacy-border: #bfdcc9;
   --color-disabled: #c4b5a8;
   --color-mint-border: #a7c9b7;
-  --color-ink: #2b211c;
+  --color-ink: #2d2a26;
+  --color-ink-muted: #5c5752;
   --color-border: #e8d8c8;
   --color-cream-muted: #f5f0ea;
   --color-mint: #5e8f73;
@@ -80,24 +81,38 @@
   scroll-snap-align: center;
 }
 
-/* 좌·우 폰 — 살짝 작고 흐리게 */
-.phone-mockup-figure--side {
-  opacity: 0.85;
-  transform: scale(0.95) translateY(0.5rem);
+.phone-showcase-row > .phone-mockup-figure {
+  transition:
+    transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1),
+    opacity 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
+/* 좌·우 — 작고 아래 */
+.phone-mockup-figure--side {
+  opacity: 0.94;
+  transform: scale(0.93) translateY(0.75rem);
+}
+
+/* 가운데 — 크고 위 */
 .phone-mockup-figure--center {
-  transform: translateY(-0.25rem);
-  z-index: 2;
+  z-index: 1;
+  transform: scale(1.02) translateY(0);
 }
 
 @media (min-width: 640px) {
   .phone-mockup-figure--side {
-    transform: scale(0.95) translateY(0.75rem);
+    transform: scale(0.93) translateY(1rem);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .phone-mockup-figure--side:hover {
+    opacity: 1;
+    transform: scale(0.96) translateY(0.5rem);
   }
 
-  .phone-mockup-figure--center {
-    transform: translateY(-0.5rem);
+  .phone-mockup-figure--center:hover {
+    transform: scale(1.032) translateY(-0.125rem);
   }
 }
 
@@ -105,7 +120,6 @@
 .phone-mockup-photo {
   width: 12rem;
   line-height: 0;
-  filter: drop-shadow(0 12px 24px rgb(43 33 28 / 0.12));
 }
 
 @media (min-width: 640px) {
@@ -116,9 +130,6 @@
 
 .phone-mockup-figure--center .phone-mockup-photo {
   width: 14rem;
-  filter: none;
-  border-radius: 1.25rem;
-  box-shadow: 0 30px 60px rgb(0 0 0 / 0.08);
 }
 
 @media (min-width: 640px) {
@@ -145,6 +156,7 @@
   display: block;
   width: 100%;
   height: auto;
+  filter: drop-shadow(0 12px 30px rgb(0 0 0 / 0.12));
   /* 고해상도 원본을 축소할 때 텍스트·아이콘 선명도 유지 */
   image-rendering: -webkit-optimize-contrast;
 }

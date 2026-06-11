@@ -10,17 +10,19 @@ export default function CTA({ embedded = false }: CTAProps) {
   const card = (
     <div
       id="download"
-      className="scroll-mt-24 rounded-[28px] border border-[#E8D8C8] bg-white/80 px-8 py-10 text-center shadow-sm"
+      className="cta-card scroll-mt-24 rounded-[28px] border border-[#E8D8C8] bg-white/80 px-6 py-8 text-center shadow-sm sm:px-12 sm:py-11"
     >
       <h2
         id="cta-title"
-        className="text-2xl font-black text-[#2B211C]"
+        className="mb-[-4px] text-balance text-2xl font-bold text-ink sm:text-3xl"
       >
         {SITE.ctaTitle}
       </h2>
 
-      <p className="mt-3 text-sm leading-6 text-[#8A7468]">
-        {SITE.ctaDescription}
+      <p className="mx-auto mt-4 max-w-[420px] text-base leading-relaxed text-ink-muted sm:text-lg">
+        {SITE.ctaDescription.split("\n")[0]}
+        <br />
+        {SITE.ctaDescription.split("\n")[1]}
       </p>
 
       <div className="mt-6 flex flex-wrap justify-center gap-2">
